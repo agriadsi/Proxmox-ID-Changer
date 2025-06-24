@@ -65,7 +65,7 @@ echo -e "${GREEN}Logische Volumes Ausgabe:${NC}"
 echo "$lvs_output"
 
 # Suche nach Volume Group
-VG_NAME=$(echo "$lvs_output" | grep -E "\s$OLD_VMID\b" | awk '{print $2}' | uniq)
+VG_NAME=$(echo "$lvs_output" | grep -E "\b$OLD_VMID\b" | awk '{print $2}' | uniq)
 
 if [ -z "$VG_NAME" ]; then
   echo -e "${YELLOW}Keine LVM-Volumes gefunden für VMID $OLD_VMID. Überprüfe ZFS-Volumes...${NC}"
